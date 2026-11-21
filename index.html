@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noon Minutes</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#F5E000">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--y:#F5E000;--r:#D91E1E;--rd:#B01212;--k:#161616;--soft:#FFF8B8;--bg:#F5E000;--cd:#fff;--tx:#161616;--bd:#161616}body.dark{--bg:#141414;--cd:#242424;--tx:#fff;--soft:#333;--bd:#8a8a8a}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--tx);transition:background .3s,color .3s;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.top{width:100%;max-width:520px;display:flex;justify-content:space-between;gap:8px;padding:12px 16px 0}
+.pill{border:2.5px solid var(--bd);background:var(--cd);color:var(--tx);font:700 14px Cairo;padding:6px 14px;border-radius:999px;cursor:pointer}
+.pill.inst{background:var(--r);border-color:var(--r);color:#fff}
+header{display:flex;justify-content:center;padding:6px 16px}
+header img{width:116px;height:116px;border-radius:26px;box-shadow:0 8px 0 rgba(0,0,0,.12)}
+main{width:100%;max-width:520px;padding:10px 16px 26px;flex:1}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--k);border-radius:20px;padding:5px;gap:5px;margin-bottom:16px}
+.tab{border:0;font:700 16px Cairo;padding:12px;border-radius:15px;background:transparent;color:#fff;cursor:pointer}
+.tab.on{background:var(--r);box-shadow:0 3px 0 var(--rd)}
+.card{background:var(--cd);animation:pop .35s ease;border-radius:26px;padding:18px;box-shadow:0 8px 0 rgba(0,0,0,.12);margin-bottom:14px}
+.pv{text-align:center}
+#qr{display:inline-block;padding:12px;background:#fff;border:3px solid var(--k);border-radius:20px;line-height:0}
+#qr canvas,#qr img{width:200px!important;height:200px!important}
+.code{direction:ltr;font:900 22px/1.2 Cairo,monospace;margin-top:12px;word-break:break-all}
+.lbl{font-weight:700;font-size:14px;margin:12px 2px 8px;display:block}
+.lbl:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2.5px solid var(--bd);background:var(--cd);color:var(--tx);transition:transform .12s,background .2s;font:700 15px Cairo;padding:7px 14px;border-radius:999px;cursor:pointer;min-width:46px;text-align:center}
+.chip.n{padding:7px 0;width:48px}
+.chip.on{background:var(--r);border-color:var(--r);color:#fff}
+.btn{width:100%;border:0;cursor:pointer;font:700 16px Cairo;padding:13px;border-radius:16px;margin-top:10px}
+.btn:active{transform:translateY(3px)}
+.red{background:var(--r);color:#fff;box-shadow:0 4px 0 var(--rd)}
+.wht{background:var(--cd);color:var(--r);border:2.5px solid var(--r)}
+.blk{background:var(--k);color:#fff;box-shadow:0 4px 0 #000}
+.two{display:flex;gap:8px}
+input[type=text]{width:100%;font:700 22px Cairo;padding:11px;border-radius:14px;border:2.5px solid var(--bd);background:var(--soft);color:var(--tx);outline:none;direction:ltr;text-align:center;letter-spacing:2px}
+input:focus{border-color:var(--r)}
+.hide{display:none!important}
+.msg{margin-top:10px;font-weight:700;color:var(--r);text-align:center;min-height:22px}
+#res{text-align:center}
+#res .big{direction:ltr;font:900 32px Cairo;letter-spacing:2px;word-break:break-all}
+#bc{max-width:100%;height:auto}
+#cam{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9;padding:16px}
+#cam.on{display:flex}
+.cbox{background:var(--bg);border-radius:26px;padding:16px;width:100%;max-width:440px}
+#reader{border-radius:18px;overflow:hidden;background:#000;min-height:240px}
+#welcome{position:fixed;inset:0;background:var(--bg);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .6s ease;cursor:pointer}
+#welcome img{width:130px;border-radius:28px;box-shadow:0 8px 0 rgba(0,0,0,.12)}
+#welcome h1{font:900 26px Cairo;background:var(--r);color:#fff;padding:10px 22px;border-radius:18px;direction:ltr;box-shadow:0 5px 0 var(--rd);text-align:center}
+#welcome.out{opacity:0;pointer-events:none}
+footer{width:100%;background:var(--k);color:#fff;text-align:center;padding:14px;font-size:14px;direction:ltr}
+footer b{color:var(--y)}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes bump{50%{transform:scale(1.06)}}
+@keyframes logo{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+section{animation:pop .3s ease}
+#qr.bump{animation:bump .25s}
+#welcome img{animation:logo .6s cubic-bezier(.2,1.4,.4,1)}
+.chip:active{transform:scale(.9)}
+.qrin{display:flex;gap:8px;margin-bottom:14px}
+.qrin input{font-size:16px;letter-spacing:1px;padding:9px}
+.ico{flex:0 0 46px;border:0;border-radius:14px;background:var(--r);box-shadow:0 3px 0 var(--rd);font-size:20px;cursor:pointer}
+.ico:active{transform:translateY(3px)}
+.rt{margin-inline-start:auto;display:flex;gap:8px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="welcome"><img src="icon-192.png" alt=""><h1 id="wtxt"></h1></div>
+
+<div class="top">
+ <button class="pill inst hide" id="inst"></button>
+ <div class="rt"><button class="pill" id="theme">🌙</button><button class="pill" id="lang">English</button></div>
+</div>
+<header><img src="icon-192.png" alt="noon Minutes"></header>
+<main>
+ <div class="tabs">
+  <button class="tab on" data-t="q" id="t1"></button>
+  <button class="tab" data-t="p" id="t2"></button>
+ </div>
+
+ <section id="sq">
+  <div class="card pv">
+   <div class="qrin"><input type="text" id="qin" placeholder="DS16-CHR-02-03A" autocapitalize="characters" autocomplete="off"><button class="ico" id="qcam" aria-label="scan">📷</button></div>
+   <div id="qr"></div>
+   <div class="code" id="codeTxt"></div>
+  </div>
+  <div class="card" id="sel"></div>
+ </section>
+
+ <section id="sp" class="hide">
+  <div class="card">
+   <span class="lbl" id="penter"></span>
+   <input type="text" id="pc" inputmode="numeric" maxlength="13" placeholder="0000000000000">
+   <button class="btn red" id="scan"></button>
+   <button class="btn wht" id="scanimg"></button>
+   <input type="file" id="file" accept="image/*" class="hide">
+   <div class="msg" id="pmsg"></div>
+  </div>
+  <div class="card hide" id="res">
+   <div class="big" id="pbig"></div>
+   <svg id="bc"></svg>
+   <div class="two"><button class="btn blk" id="pcp"></button><button class="btn wht" id="pclr"></button></div>
+  </div>
+ </section>
+</main>
+
+<div id="cam"><div class="cbox">
+ <div id="reader"></div>
+ <div class="msg" id="cmsg" style="color:var(--tx)"></div>
+ <button class="btn blk" id="flash"></button>
+ <button class="btn red" id="cclose"></button>
+</div></div>
+<div id="tmp" class="hide"></div>
+
+<footer>Copyright © _iim_mosev &nbsp;|&nbsp; powered by <b>SEIF MOHAMED</b></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
+<script>
+const T={
+ ar:{w:'أهلاً بعودتك : _iim_mosev',t1:'QR الأماكن',t2:'Product Code',zone:'القسم',aisle:'الممر',cab:'الدولاب',row:'الصف',col:'العمود',pal:'رقم البالتة',
+  enter:'اكتب الكود (من 8 إلى 13 رقم)',scan:'افتح الكاميرا واسكان',img:'اسكان من صورة',bad:'الكود لازم يكون من 8 إلى 13 رقم',aim:'وجّه الكاميرا ناحية الباركود',
+  close:'إغلاق',copy:'نسخ',done:'تم النسخ ✓',clr:'مسح',none:'مفيش كود من 8 إلى 13 رقم في الصورة، جرّب تاني',cerr:'مش قادر أفتح الكاميرا. اسمح بالوصول للكاميرا من إعدادات المتصفح.',inst:'⬇ تثبيت كبرنامج',lang:'English',flash:'🔦 فلاش',fno:'الفلاش مش مدعوم على الجهاز ده'},
+ en:{w:'Welcome back : _iim_mosev',t1:'Location QR',t2:'Product Code',zone:'Section',aisle:'Aisle',cab:'Cabinet',row:'Row',col:'Column',pal:'Pallet No.',
+  enter:'Enter code (8 to 13 digits)',scan:'Open camera & scan',img:'Scan from image',bad:'Code must be 8 to 13 digits',aim:'Point the camera at the barcode',
+  close:'Close',copy:'Copy',done:'Copied ✓',clr:'Clear',none:'No 8–13 digit code found, try again',cerr:'Cannot open the camera. Allow camera access in browser settings.',inst:'⬇ Install app',lang:'عربي',flash:'🔦 Flash',fno:'Flash is not supported on this device'}
+};
+const ZN={main:['الرئيسي','Main'],bskt:['الباسكيت','Basket'],pro:['برومو','Promo'],chr:['التلاجة','Chiller'],frzr:['الفريزر','Freezer'],pallet:['البالتات','Pallets'],hv:['هاي فاليو','High Value']};
+const P='DS16',pad=n=>String(n).padStart(2,'0');
+const Z={
+ main:{aisle:20,cab:15,rows:7,f:s=>`${P}-${pad(s.a)}-${pad(s.c)}-${pad(s.r)}${s.l}`},
+ bskt:{cab:5,rows:7,f:s=>`${P}-BSKT${pad(s.c)}-${pad(s.r)}${s.l}`},
+ pro:{cab:3,rows:7,f:s=>`${P}-PRO-${pad(s.c)}-${pad(s.r)}${s.l}`},
+ chr:{cab:25,rows:7,f:s=>`${P}-CHR-${pad(s.c)}-${pad(s.r)}${s.l}`},
+ frzr:{cab:25,rows:7,f:s=>`${P}-FRZR-${pad(s.c)}-${pad(s.r)}${s.l}`},
+ pallet:{cab:5,pal:1,f:s=>`${P}-PALLET-${pad(s.c)}`},
+ hv:{cab:6,rows:7,f:s=>`${P}-HV-${pad(s.c)}-${pad(s.r)}${s.l}`}
+};
+const $=id=>document.getElementById(id);
+let lang=localStorage.getItem('nm_lang')||'ar',zone='main',s={a:1,c:1,r:1,l:'A'};
+const t=k=>T[lang][k];
+
+function group(label,key,items,cls){
+ return `<span class="lbl">${label}</span><div class="chips">${items.map(v=>`<button class="chip ${cls} ${String(s[key])===String(v)?'on':''}" data-k="${key}" data-v="${v}">${key==='l'?v:(key==='z'?v[1]:pad(v))}</button>`).join('')}</div>`;
+}
+function build(){
+ const z=Z[zone],rng=n=>Array.from({length:n},(_,i)=>i+1);
+ const zs=Object.keys(Z).map(k=>`<button class="chip ${k===zone?'on':''}" data-k="z" data-v="${k}">${ZN[k][lang==='ar'?0:1]}</button>`).join('');
+ let h=`<span class="lbl">${t('zone')}</span><div class="chips">${zs}</div>`;
+ if(z.aisle)h+=group(t('aisle'),'a',rng(z.aisle),'n');
+ h+=group(z.pal?t('pal'):t('cab'),'c',rng(z.cab),'n');
+ if(z.rows){h+=group(t('row'),'r',rng(z.rows),'n');h+=group(t('col'),'l',['A','B','C'],'n')}
+ $('sel').innerHTML=h;
+ $('sel').querySelectorAll('.chip').forEach(b=>b.onclick=()=>{
+  const k=b.dataset.k,v=b.dataset.v;
+  if(k==='z'){zone=v;s.a=Math.min(s.a,Z[v].aisle||1);s.c=Math.min(s.c,Z[v].cab)}
+  else s[k]=k==='l'?v:+v;
+  build();render();
+ });
+}
+let cur='';
+function draw(c){
+ cur=c;$('codeTxt').textContent=c;$('qr').innerHTML='';
+ new QRCode($('qr'),{text:c,width:400,height:400,correctLevel:QRCode.CorrectLevel.M});
+ $('qr').classList.remove('bump');void $('qr').offsetWidth;$('qr').classList.add('bump');
+}
+function render(){const c=Z[zone].f(s);$('qin').value=c;draw(c)}
+const norm=v=>{v=v.trim().toUpperCase().replace(/\s+/g,'');return !v?'':v.startsWith('DS16')?v:'DS16-'+v.replace(/^-+/,'')};
+function ok(z,v){const d=Z[z];if(v.c<1||v.c>d.cab||(v.a&&v.a>d.aisle)||(v.r&&v.r>(d.rows||0)))return null;return{zone:z,s:v}}
+function parse(c){let m;
+ if(m=c.match(/^DS16-(\d{2})-(\d{2})-(\d{2})([A-C])$/))return ok('main',{a:+m[1],c:+m[2],r:+m[3],l:m[4]});
+ if(m=c.match(/^DS16-BSKT(\d{2})-(\d{2})([A-C])$/))return ok('bskt',{c:+m[1],r:+m[2],l:m[3]});
+ if(m=c.match(/^DS16-(PRO|CHR|FRZR|HV)-(\d{2})-(\d{2})([A-C])$/))return ok(m[1].toLowerCase(),{c:+m[2],r:+m[3],l:m[4]});
+ if(m=c.match(/^DS16-PALLET-(\d{2})$/))return ok('pallet',{c:+m[1]});
+ return null}
+function setQR(raw){const c=norm(raw);if(!c)return;$('qin').value=c;const p=parse(c);if(p){zone=p.zone;s={...s,...p.s};build()}draw(c)}
+$('qin').oninput=e=>{const c=norm(e.target.value);if(c)draw(c)};
+$('qin').onchange=e=>setQR(e.target.value);
+function feedback(){
+ try{const a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.type='square';o.frequency.value=1000;g.gain.value=.15;o.connect(g);g.connect(a.destination);o.start();setTimeout(()=>{o.stop();a.close()},130)}catch(e){}
+ if(navigator.vibrate)navigator.vibrate(150);
+}
+let dark=localStorage.getItem('nm_dark')==='1';
+function applyTheme(){document.body.classList.toggle('dark',dark);$('theme').textContent=dark?'☀️':'🌙';document.querySelector('meta[name=theme-color]').content=dark?'#141414':'#F5E000'}
+$('theme').onclick=()=>{dark=!dark;localStorage.setItem('nm_dark',dark?'1':'0');applyTheme()};
+function texts(){
+ document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+ $('wtxt').textContent=t('w');$('t1').textContent=t('t1');$('t2').textContent=t('t2');
+ $('penter').textContent=t('enter');$('scan').textContent=t('scan');$('scanimg').textContent=t('img');
+ $('cclose').textContent=t('close');$('pcp').textContent=t('copy');$('pclr').textContent=t('clr');
+ $('inst').textContent=t('inst');$('flash').textContent=t('flash');$('lang').textContent=t('lang');$('cmsg').textContent=t('aim');
+}
+$('lang').onclick=()=>{lang=lang==='ar'?'en':'ar';localStorage.setItem('nm_lang',lang);texts();build();$('pmsg').textContent=''};
+
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));
+ $('sq').classList.toggle('hide',b.dataset.t!=='q');$('sp').classList.toggle('hide',b.dataset.t!=='p');
+});
+
+function showProd(c){
+ $('pc').value=c;$('pbig').textContent=c;$('res').classList.remove('hide');$('pmsg').textContent='';
+ const f=c.length===13?'EAN13':c.length===8?'EAN8':'CODE128';
+ try{JsBarcode('#bc',c,{format:f,height:70,displayValue:false,margin:4})}
+ catch(e){try{JsBarcode('#bc',c,{format:'CODE128',height:70,displayValue:false,margin:4})}catch(_){}}
+}
+$('pc').oninput=e=>{
+ const v=e.target.value.replace(/\D/g,'');e.target.value=v;
+ if(v.length>=8&&v.length<=13)showProd(v);
+ else{$('res').classList.add('hide');$('pmsg').textContent=v?t('bad'):''}
+};
+$('pcp').onclick=async e=>{try{await navigator.clipboard.writeText($('pc').value)}catch(_){$('pc').select();document.execCommand('copy')}
+ const o=t('copy');e.target.textContent=t('done');setTimeout(()=>e.target.textContent=t('copy'),1200)};
+$('pclr').onclick=()=>{$('pc').value='';$('res').classList.add('hide');$('pmsg').textContent=''};
+
+let sc=null,torch=false;
+async function closeCam(){$('cam').classList.remove('on');torch=false;if(sc){try{await sc.stop();sc.clear()}catch(e){}sc=null}}
+$('cclose').onclick=closeCam;
+async function openCam(mode){
+ $('cam').classList.add('on');$('cmsg').textContent=t('aim');
+ try{
+  sc=new Html5Qrcode('reader',{experimentalFeatures:{useBarCodeDetectorIfSupported:true},verbose:false});
+  const box=mode==='qr'?{width:220,height:220}:{width:280,height:140};
+  await sc.start({facingMode:'environment'},{fps:12,qrbox:box},txt=>{
+   if(mode==='qr'){const c=String(txt).trim();if(c){feedback();setQR(c);closeCam()}}
+   else{const m=String(txt).match(/\d{8,13}/);if(m){feedback();showProd(m[0]);closeCam()}else $('cmsg').textContent=t('none')}
+  },()=>{});
+ }catch(e){$('cmsg').textContent=t('cerr')}
+}
+$('scan').onclick=()=>openCam('prod');$('qcam').onclick=()=>openCam('qr');
+$('flash').onclick=async()=>{
+ try{if(!sc)return;const f=sc.getRunningTrackCameraCapabilities().torchFeature();
+  if(!f.isSupported()){$('cmsg').textContent=t('fno');return}
+  torch=!torch;await f.apply(torch)}
+ catch(e){torch=false;$('cmsg').textContent=t('fno')}
+};
+$('scanimg').onclick=()=>$('file').click();
+$('file').onchange=async e=>{
+ const f=e.target.files[0];if(!f)return;
+ try{const r=await new Html5Qrcode('tmp',{experimentalFeatures:{useBarCodeDetectorIfSupported:true},verbose:false}).scanFile(f,false);
+  const m=String(r).match(/\d{8,13}/);if(m){feedback();showProd(m[0])}else $('pmsg').textContent=t('none')}
+ catch(_){$('pmsg').textContent=t('none')}
+ e.target.value='';
+};
+
+let dp=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('inst').classList.remove('hide')});
+window.addEventListener('appinstalled',()=>$('inst').classList.add('hide'));
+$('inst').onclick=async()=>{if(!dp)return;dp.prompt();await dp.userChoice;dp=null;$('inst').classList.add('hide')};
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+applyTheme();texts();build();render();
+const w=$('welcome'),hideW=()=>{w.classList.add('out');setTimeout(()=>w.remove(),600)};
+w.onclick=hideW;setTimeout(hideW,1400);
+</script>
+</body>
+</html>
