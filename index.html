@@ -158,7 +158,7 @@ const T={
 const ZN={main:['الرئيسي','Main'],bskt:['الباسكيت','Basket'],pro:['برومو','Promo'],chr:['التلاجة','Chiller'],frzr:['الفريزر','Freezer'],pallet:['البالتات','Pallets'],hv:['هاي فاليو','High Value']};
 const P='DS16',pad=n=>String(n).padStart(2,'0');
 const Z={
- main:{aisle:20,cab:15,rows:7,f:s=>`${P}-${pad(s.a)}-${pad(s.c)}-${pad(s.r)}${s.l}`},
+ main:{aisle:12,cab:15,rows:7,f:s=>`${P}-${pad(s.a)}-${pad(s.c)}-${pad(s.r)}${s.l}`},
  bskt:{cab:5,rows:7,f:s=>`${P}-BSKT${pad(s.c)}-${pad(s.r)}${s.l}`},
  pro:{cab:3,rows:7,f:s=>`${P}-PRO-${pad(s.c)}-${pad(s.r)}${s.l}`},
  chr:{cab:25,rows:7,f:s=>`${P}-CHR-${pad(s.c)}-${pad(s.r)}${s.l}`},
