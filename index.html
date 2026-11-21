@@ -19,8 +19,8 @@ body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--t
 header{display:flex;justify-content:center;padding:6px 16px}
 header img{width:116px;height:116px;border-radius:26px;box-shadow:0 8px 0 rgba(0,0,0,.12)}
 main{width:100%;max-width:520px;padding:10px 16px 26px;flex:1}
-.tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--k);border-radius:20px;padding:5px;gap:5px;margin-bottom:16px}
-.tab{border:0;font:700 16px Cairo;padding:12px;border-radius:15px;background:transparent;color:#fff;cursor:pointer}
+.tabs{display:grid;grid-template-columns:1fr 1fr 1.1fr;background:var(--k);border-radius:20px;padding:5px;gap:5px;margin-bottom:16px}
+.tab{border:0;font:700 14px Cairo;padding:11px 4px;border-radius:15px;background:transparent;color:#fff;cursor:pointer}
 .tab.on{background:var(--r);box-shadow:0 3px 0 var(--rd)}
 .card{background:var(--cd);animation:pop .35s ease;border-radius:26px;padding:18px;box-shadow:0 8px 0 rgba(0,0,0,.12);margin-bottom:14px}
 .pv{text-align:center}
@@ -69,6 +69,14 @@ section{animation:pop .3s ease}
 .ico:active{transform:translateY(3px)}
 .rt{margin-inline-start:auto;display:flex;gap:8px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+#ppv{width:100%;border-radius:16px;margin-top:12px}
+.cr{display:flex;align-items:center;gap:10px;margin-top:10px}
+.cr span{flex:1;font-weight:700;direction:ltr;text-align:start}
+.cb{width:44px;height:44px;border-radius:14px;border:0;font:900 22px Cairo;background:var(--r);color:#fff;box-shadow:0 3px 0 var(--rd);cursor:pointer}
+.cb.m{background:var(--cd);color:var(--r);border:2.5px solid var(--r);box-shadow:none}
+.cb:active{transform:scale(.9)}
+.cn{width:44px;text-align:center;font:900 24px Cairo}
+a.btn{display:block;text-align:center;text-decoration:none}
 </style>
 </head>
 <body>
@@ -83,6 +91,7 @@ section{animation:pop .3s ease}
  <div class="tabs">
   <button class="tab on" data-t="q" id="t1"></button>
   <button class="tab" data-t="p" id="t2"></button>
+  <button class="tab" data-t="g" id="t3"></button>
  </div>
 
  <section id="sq">
@@ -109,6 +118,18 @@ section{animation:pop .3s ease}
    <div class="two"><button class="btn blk" id="pcp"></button><button class="btn wht" id="pclr"></button></div>
   </div>
  </section>
+<section id="sg" class="hide">
+  <div class="card">
+   <button class="btn red" id="snap" style="margin-top:0"></button>
+   <input type="file" id="pf" accept="image/*" capture="environment" class="hide">
+   <img id="ppv" class="hide" alt="">
+   <div id="cnt"></div>
+   <button class="btn blk" id="gok">OK</button>
+   <a class="btn wht" id="glink" href="https://chat.whatsapp.com/Dj9lVvSMvVf3qWGlMRyhDX?s=cl&p=a&iam=2" target="_blank" rel="noopener"></a>
+   <button class="btn wht" id="grst"></button>
+   <div class="msg" id="gmsg"></div>
+  </div>
+ </section>
 </main>
 
 <div id="cam"><div class="cbox">
@@ -128,15 +149,15 @@ section{animation:pop .3s ease}
 const T={
  ar:{w:'أهلاً بعودتك : _iim_mosev',t1:'QR الأماكن',t2:'Product Code',zone:'القسم',aisle:'الممر',cab:'الدولاب',row:'الصف',col:'العمود',pal:'رقم البالتة',
   enter:'اكتب الكود (من 8 إلى 13 رقم)',scan:'افتح الكاميرا واسكان',img:'اسكان من صورة',bad:'الكود لازم يكون من 8 إلى 13 رقم',aim:'وجّه الكاميرا ناحية الباركود',
-  close:'إغلاق',copy:'نسخ',done:'تم النسخ ✓',clr:'مسح',none:'مفيش كود من 8 إلى 13 رقم في الصورة، جرّب تاني',cerr:'مش قادر أفتح الكاميرا. اسمح بالوصول للكاميرا من إعدادات المتصفح.',inst:'⬇ تثبيت كبرنامج',lang:'English',flash:'🔦 فلاش',fno:'الفلاش مش مدعوم على الجهاز ده'},
+  close:'إغلاق',copy:'نسخ',done:'تم النسخ ✓',clr:'مسح',none:'مفيش كود من 8 إلى 13 رقم في الصورة، جرّب تاني',cerr:'مش قادر أفتح الكاميرا. اسمح بالوصول للكاميرا من إعدادات المتصفح.',inst:'⬇ تثبيت كبرنامج',lang:'English',flash:'🔦 فلاش',t3:'تصوير ➜ 👥',snap:'📷 صوّر',retake:'📷 صوّر تاني',rst:'مسح الكل',grp:'فتح الجروب',nophoto:'صوّر الصورة الأول',shared:'اختار الجروب من القايمة وابعت',desk:'الصورة والرسالة اتنسخوا. الصقهم (Ctrl+V) في الجروب',fno:'الفلاش مش مدعوم على الجهاز ده'},
  en:{w:'Welcome back : _iim_mosev',t1:'Location QR',t2:'Product Code',zone:'Section',aisle:'Aisle',cab:'Cabinet',row:'Row',col:'Column',pal:'Pallet No.',
   enter:'Enter code (8 to 13 digits)',scan:'Open camera & scan',img:'Scan from image',bad:'Code must be 8 to 13 digits',aim:'Point the camera at the barcode',
-  close:'Close',copy:'Copy',done:'Copied ✓',clr:'Clear',none:'No 8–13 digit code found, try again',cerr:'Cannot open the camera. Allow camera access in browser settings.',inst:'⬇ Install app',lang:'عربي',flash:'🔦 Flash',fno:'Flash is not supported on this device'}
+  close:'Close',copy:'Copy',done:'Copied ✓',clr:'Clear',none:'No 8–13 digit code found, try again',cerr:'Cannot open the camera. Allow camera access in browser settings.',inst:'⬇ Install app',lang:'عربي',flash:'🔦 Flash',t3:'Photo ➜ 👥',snap:'📷 Take photo',retake:'📷 Retake',rst:'Reset',grp:'Open group',nophoto:'Take a photo first',shared:'Pick the group from the list and send',desk:'Photo and message copied. Paste (Ctrl+V) in the group',fno:'Flash is not supported on this device'}
 };
 const ZN={main:['الرئيسي','Main'],bskt:['الباسكيت','Basket'],pro:['برومو','Promo'],chr:['التلاجة','Chiller'],frzr:['الفريزر','Freezer'],pallet:['البالتات','Pallets'],hv:['هاي فاليو','High Value']};
 const P='DS16',pad=n=>String(n).padStart(2,'0');
 const Z={
- main:{aisle:12,cab:15,rows:7,f:s=>`${P}-${pad(s.a)}-${pad(s.c)}-${pad(s.r)}${s.l}`},
+ main:{aisle:20,cab:15,rows:7,f:s=>`${P}-${pad(s.a)}-${pad(s.c)}-${pad(s.r)}${s.l}`},
  bskt:{cab:5,rows:7,f:s=>`${P}-BSKT${pad(s.c)}-${pad(s.r)}${s.l}`},
  pro:{cab:3,rows:7,f:s=>`${P}-PRO-${pad(s.c)}-${pad(s.r)}${s.l}`},
  chr:{cab:25,rows:7,f:s=>`${P}-CHR-${pad(s.c)}-${pad(s.r)}${s.l}`},
@@ -196,13 +217,13 @@ function texts(){
  $('wtxt').textContent=t('w');$('t1').textContent=t('t1');$('t2').textContent=t('t2');
  $('penter').textContent=t('enter');$('scan').textContent=t('scan');$('scanimg').textContent=t('img');
  $('cclose').textContent=t('close');$('pcp').textContent=t('copy');$('pclr').textContent=t('clr');
- $('inst').textContent=t('inst');$('flash').textContent=t('flash');$('lang').textContent=t('lang');$('cmsg').textContent=t('aim');
+ $('inst').textContent=t('inst');$('flash').textContent=t('flash');$('t3').textContent=t('t3');$('snap').textContent=photo?t('retake'):t('snap');$('grst').textContent=t('rst');$('glink').textContent=t('grp');$('lang').textContent=t('lang');$('cmsg').textContent=t('aim');
 }
 $('lang').onclick=()=>{lang=lang==='ar'?'en':'ar';localStorage.setItem('nm_lang',lang);texts();build();$('pmsg').textContent=''};
 
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));
- $('sq').classList.toggle('hide',b.dataset.t!=='q');$('sp').classList.toggle('hide',b.dataset.t!=='p');
+ $('sq').classList.toggle('hide',b.dataset.t!=='q');$('sp').classList.toggle('hide',b.dataset.t!=='p');$('sg').classList.toggle('hide',b.dataset.t!=='g');
 });
 
 function showProd(c){
@@ -256,6 +277,32 @@ window.addEventListener('appinstalled',()=>$('inst').classList.add('hide'));
 $('inst').onclick=async()=>{if(!dp)return;dp.prompt();await dp.userChoice;dp=null;$('inst').classList.add('hide')};
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 
+const GROUP='https://chat.whatsapp.com/Dj9lVvSMvVf3qWGlMRyhDX?s=cl&p=a&iam=2',STORE='CAIDS16';
+const CF=[['Missing SKU','sku'],['Excess','exc'],['Missing','mis'],['Damage','dmg'],['Wrong','wr'],['Tote Missing','tote']];
+let cn={},photo=null,pcv=null;
+function drawCnt(){
+ $('cnt').innerHTML=CF.map(([l,k])=>`<div class="cr"><span>${l}</span><button class="cb m" data-k="${k}" data-d="-1">−</button><b class="cn">${cn[k]||0}</b><button class="cb" data-k="${k}" data-d="1">+</button></div>`).join('');
+ $('cnt').querySelectorAll('.cb').forEach(b=>b.onclick=()=>{const k=b.dataset.k;cn[k]=Math.max(0,(cn[k]||0)+ +b.dataset.d);drawCnt()});
+}
+function gmsg(){const n=k=>cn[k]||0;
+ return `Store Code: ${STORE}\nMissing SKU Count : ${n('sku')}\n`+(n('exc')?`Excess Items: ${n('exc')}\n`:'')+`Missing Items: ${n('mis')}\nDamage item: ${n('dmg')}\nWrong item: ${n('wr')}\nTote Missing: ${n('tote')}`}
+$('snap').onclick=()=>$('pf').click();
+$('pf').onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Image();
+ im.onload=()=>{const k=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);pcv=c;
+  c.toBlob(b=>{photo=new File([b],'noon-'+Date.now()+'.jpg',{type:'image/jpeg'});$('ppv').src=URL.createObjectURL(b);$('ppv').classList.remove('hide');$('snap').textContent=t('retake')},'image/jpeg',.85)};
+ im.src=URL.createObjectURL(f);e.target.value=''};
+$('grst').onclick=()=>{cn={};photo=null;pcv=null;$('ppv').classList.add('hide');$('snap').textContent=t('snap');$('gmsg').textContent='';drawCnt()};
+$('gok').onclick=async()=>{
+ if(!photo){$('gmsg').textContent=t('nophoto');return}
+ const text=gmsg();
+ try{await navigator.clipboard.writeText(text)}catch(e){}
+ if(navigator.canShare&&navigator.canShare({files:[photo]})){
+  try{await navigator.share({files:[photo],text});$('gmsg').textContent=t('shared');return}catch(e){if(e.name==='AbortError')return}
+ }
+ try{await navigator.clipboard.write([new ClipboardItem({'image/png':new Promise(r=>pcv.toBlob(r,'image/png')),'text/plain':new Blob([text],{type:'text/plain'})})])}catch(e){}
+ window.open(GROUP,'_blank');$('gmsg').textContent=t('desk');
+};
+drawCnt();
 applyTheme();texts();build();render();
 const w=$('welcome'),hideW=()=>{w.classList.add('out');setTimeout(()=>w.remove(),600)};
 w.onclick=hideW;setTimeout(hideW,1400);
