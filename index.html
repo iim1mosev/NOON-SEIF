@@ -190,7 +190,7 @@ const T={
 const ZN={main:['الرئيسي','Main'],bskt:['الباسكيت','Basket'],pro:['برومو','Promo'],chr:['التلاجة','Chiller'],fzr:['الفريزر','Freezer'],pallet:['البالتات','Pallets'],hv:['هاي فاليو','High Value']};
 const P='DS16',pad=n=>String(n).padStart(2,'0');
 const Z={
- main:{aisle:12,cab:16,rows:7,f:s=>`${P}-${pad(s.a)}-${pad(s.c)}-${pad(s.r)}${s.l}`},
+ main:{aisle:20,cab:15,rows:7,f:s=>`${P}-${pad(s.a)}-${pad(s.c)}-${pad(s.r)}${s.l}`},
  bskt:{cab:5,rows:7,f:s=>`${P}-BSKT${pad(s.c)}-${pad(s.r)}${s.l}`},
  pro:{cab:3,rows:7,f:s=>`${P}-PRO-${pad(s.c)}-${pad(s.r)}${s.l}`},
  chr:{cab:25,rows:7,f:s=>`${P}-CHR-${pad(s.c)}-${pad(s.r)}${s.l}`},
@@ -253,7 +253,7 @@ function texts(){
  $('cclose').textContent=t('close');$('pcp').textContent=t('copy');$('pclr').textContent=t('clr');
  $('inst').textContent=t('inst');$('flash').textContent=t('flash');$('t3').textContent=t('t3');$('t4').textContent=t('t4');$('t5').textContent=t('t5');$('tswap').textContent=t('swap');buildPre();$('snap').textContent=photo?t('retake'):t('snap');$('grst').textContent=t('rst');$('glink').textContent=t('grp');$('lang').textContent=t('lang');$('cmsg').textContent=t('aim');
 }
-$('lang').onclick=()=>{lang=lang==='ar'?'en':'ar';localStorage.setItem('nm_lang',lang);texts();build();$('pmsg').textContent=''};
+$('lang').onclick=()=>{localStorage.setItem('nm_lang',lang==='ar'?'en':'ar');location.reload()};
 
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));
