@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#F5E000">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--i-lock:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='4'%20y='11'%20width='16'%20height='10'%20rx='2'/%3E%3Cpath%20d='M8%2011V7a4%204%200%200%201%208%200v4'/%3E%3C/svg%3E");--i-qr:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='3'%20width='7'%20height='7'%20rx='1'/%3E%3Crect%20x='14'%20y='3'%20width='7'%20height='7'%20rx='1'/%3E%3Crect%20x='3'%20y='14'%20width='7'%20height='7'%20rx='1'/%3E%3Cpath%20d='M14%2014h3v3M21%2014v.01M14%2021h.01M17%2021h4v-4'/%3E%3C/svg%3E");--i-bar:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%205v14M7%205v14M11%205v14M14%205v14M18%205v14M21%205v14'/%3E%3C/svg%3E");--i-cam:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%207h3l2-3h6l2%203h3a1%201%200%200%201%201%201v11a1%201%200%200%201-1%201H4a1%201%200%200%201-1-1V8a1%201%200%200%201%201-1z'/%3E%3Ccircle%20cx='12'%20cy='13'%20r='4'/%3E%3C/svg%3E");--i-tag:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M20.6%2013.4l-7.2%207.2a2%202%200%200%201-2.8%200L3%2013V3h10l7.6%207.6a2%202%200%200%201%200%202.8z'/%3E%3Ccircle%20cx='7.5'%20cy='7.5'%20r='1'/%3E%3C/svg%3E");--i-box:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M21%208l-9-5-9%205v8l9%205%209-5z'/%3E%3Cpath%20d='M3%208l9%205%209-5M12%2013v8'/%3E%3C/svg%3E");--i-sun:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='12'%20r='4'/%3E%3Cpath%20d='M12%202v2M12%2020v2M4.9%204.9l1.4%201.4M17.7%2017.7l1.4%201.4M2%2012h2M20%2012h2M4.9%2019.1l1.4-1.4M17.7%206.3l1.4-1.4'/%3E%3C/svg%3E");--i-moon:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M21%2012.8A9%209%200%201%201%2011.2%203a7%207%200%200%200%209.8%209.8z'/%3E%3C/svg%3E");--i-globe:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cpath%20d='M3%2012h18M12%203a14%2014%200%200%201%200%2018M12%203a14%2014%200%200%200%200%2018'/%3E%3C/svg%3E");--i-dl:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M12%203v12M7%2010l5%205%205-5M4%2021h16'/%3E%3C/svg%3E");--i-bolt:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M13%202L4%2014h7l-1%208%209-12h-7z'/%3E%3C/svg%3E");--i-swap:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M7%204L3%208l4%204M3%208h14M17%2020l4-4-4-4M21%2016H7'/%3E%3C/svg%3E");--i-img:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='3'%20width='18'%20height='18'%20rx='2'/%3E%3Ccircle%20cx='9'%20cy='9'%20r='2'/%3E%3Cpath%20d='M21%2015l-5-5L5%2021'/%3E%3C/svg%3E");--i-copy:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='9'%20y='9'%20width='11'%20height='11'%20rx='2'/%3E%3Cpath%20d='M5%2015V6a2%202%200%200%201%202-2h9'/%3E%3C/svg%3E");--i-x:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M18%206L6%2018M6%206l12%2012'/%3E%3C/svg%3E");--i-rst:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%2012a9%209%200%201%200%203-6.7L3%208M3%203v5h5'/%3E%3C/svg%3E");--i-ext:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M14%204h6v6M20%204l-9%209M18%2014v5a1%201%200%200%201-1%201H5a1%201%200%200%201-1-1V7a1%201%200%200%201%201-1h5'/%3E%3C/svg%3E");--i-ok:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M20%206L9%2017l-5-5'/%3E%3C/svg%3E");--y:#F5E000;--r:#D91E1E;--rh:#B91818;--k:#1C1917;--bg:#FAFAF9;--cd:#fff;--tx:#1C1917;--mut:#78716C;--line:#E7E5E4;--soft:#F5F5F4;--rad:12px;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+:root{--i-prt:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M6%209V3h12v6'/%3E%3Crect%20x='6'%20y='14'%20width='12'%20height='7'/%3E%3Cpath%20d='M6%2018H4a1%201%200%200%201-1-1v-6a1%201%200%200%201%201-1h16a1%201%200%200%201%201%201v6a1%201%200%200%201-1%201h-2'/%3E%3C/svg%3E");--i-lock:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='4'%20y='11'%20width='16'%20height='10'%20rx='2'/%3E%3Cpath%20d='M8%2011V7a4%204%200%200%201%208%200v4'/%3E%3C/svg%3E");--i-qr:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='3'%20width='7'%20height='7'%20rx='1'/%3E%3Crect%20x='14'%20y='3'%20width='7'%20height='7'%20rx='1'/%3E%3Crect%20x='3'%20y='14'%20width='7'%20height='7'%20rx='1'/%3E%3Cpath%20d='M14%2014h3v3M21%2014v.01M14%2021h.01M17%2021h4v-4'/%3E%3C/svg%3E");--i-bar:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%205v14M7%205v14M11%205v14M14%205v14M18%205v14M21%205v14'/%3E%3C/svg%3E");--i-cam:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M4%207h3l2-3h6l2%203h3a1%201%200%200%201%201%201v11a1%201%200%200%201-1%201H4a1%201%200%200%201-1-1V8a1%201%200%200%201%201-1z'/%3E%3Ccircle%20cx='12'%20cy='13'%20r='4'/%3E%3C/svg%3E");--i-tag:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M20.6%2013.4l-7.2%207.2a2%202%200%200%201-2.8%200L3%2013V3h10l7.6%207.6a2%202%200%200%201%200%202.8z'/%3E%3Ccircle%20cx='7.5'%20cy='7.5'%20r='1'/%3E%3C/svg%3E");--i-box:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M21%208l-9-5-9%205v8l9%205%209-5z'/%3E%3Cpath%20d='M3%208l9%205%209-5M12%2013v8'/%3E%3C/svg%3E");--i-sun:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='12'%20r='4'/%3E%3Cpath%20d='M12%202v2M12%2020v2M4.9%204.9l1.4%201.4M17.7%2017.7l1.4%201.4M2%2012h2M20%2012h2M4.9%2019.1l1.4-1.4M17.7%206.3l1.4-1.4'/%3E%3C/svg%3E");--i-moon:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M21%2012.8A9%209%200%201%201%2011.2%203a7%207%200%200%200%209.8%209.8z'/%3E%3C/svg%3E");--i-globe:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='12'%20r='9'/%3E%3Cpath%20d='M3%2012h18M12%203a14%2014%200%200%201%200%2018M12%203a14%2014%200%200%200%200%2018'/%3E%3C/svg%3E");--i-dl:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M12%203v12M7%2010l5%205%205-5M4%2021h16'/%3E%3C/svg%3E");--i-bolt:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M13%202L4%2014h7l-1%208%209-12h-7z'/%3E%3C/svg%3E");--i-swap:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M7%204L3%208l4%204M3%208h14M17%2020l4-4-4-4M21%2016H7'/%3E%3C/svg%3E");--i-img:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='3'%20y='3'%20width='18'%20height='18'%20rx='2'/%3E%3Ccircle%20cx='9'%20cy='9'%20r='2'/%3E%3Cpath%20d='M21%2015l-5-5L5%2021'/%3E%3C/svg%3E");--i-copy:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='9'%20y='9'%20width='11'%20height='11'%20rx='2'/%3E%3Cpath%20d='M5%2015V6a2%202%200%200%201%202-2h9'/%3E%3C/svg%3E");--i-x:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M18%206L6%2018M6%206l12%2012'/%3E%3C/svg%3E");--i-rst:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M3%2012a9%209%200%201%200%203-6.7L3%208M3%203v5h5'/%3E%3C/svg%3E");--i-ext:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M14%204h6v6M20%204l-9%209M18%2014v5a1%201%200%200%201-1%201H5a1%201%200%200%201-1-1V7a1%201%200%200%201%201-1h5'/%3E%3C/svg%3E");--i-ok:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M20%206L9%2017l-5-5'/%3E%3C/svg%3E");--y:#F5E000;--r:#D91E1E;--rh:#B91818;--k:#1C1917;--bg:#FAFAF9;--cd:#fff;--tx:#1C1917;--mut:#78716C;--line:#E7E5E4;--soft:#F5F5F4;--rad:12px;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
 body.dark{--bg:#0C0A09;--cd:#171514;--tx:#FAFAF9;--mut:#A8A29E;--line:#2A2625;--soft:#201D1C}
 *{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%}
@@ -102,6 +102,27 @@ footer b{font-weight:600}
 @media(max-width:480px){main{padding:16px 12px 24px}.card{padding:16px}.pill:not(.ib){padding:0 10px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 section .card{scroll-margin-top:72px}
+#plabel{display:none}
+.prt{display:flex;flex-direction:column;align-items:flex-end;gap:8px;margin-top:14px;text-align:start}
+.prt .btn{width:auto;margin-top:0;padding:0 18px}
+.pbtn::before{content:"";flex:none;width:18px;height:18px;background:currentColor;-webkit-mask:var(--i-prt) center/contain no-repeat;mask:var(--i-prt) center/contain no-repeat}
+.prs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;font-size:13px;color:var(--mut)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--line);flex:none}
+.dot.on{background:#16a34a}.dot.off{background:var(--r)}
+.lnk{background:none;border:0;padding:0;color:var(--r);font-size:13px;font-weight:500;text-decoration:underline}
+@page{size:50mm 30mm;margin:0}
+@media print{
+ body>*:not(#plabel){display:none!important}
+ html,body{background:#fff!important;margin:0;padding:0;display:block!important;min-height:0}
+ #plabel{display:flex!important;align-items:center;justify-content:center;gap:2mm;width:50mm;height:30mm;padding:2mm;overflow:hidden;color:#000;background:#fff;box-sizing:border-box}
+ #plabel .lq{width:24mm;height:24mm}
+ #plabel .lt{font:700 8pt ui-monospace,Menlo,Consolas,monospace;line-height:1.2;word-break:break-all;max-width:20mm}
+ #plabel svg{width:100%;height:auto;max-height:26mm}
+}
+#toast{position:fixed;inset-inline-end:16px;bottom:16px;z-index:50;max-width:min(320px,calc(100vw - 32px));padding:12px 16px;border-radius:8px;background:var(--tx);color:var(--cd);font-size:14px;font-weight:500;border-inline-start:4px solid var(--mut);box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s,transform .2s}
+#toast.show{opacity:1;transform:none}
+#toast.good{border-inline-start-color:#16a34a}
+#toast.bad{border-inline-start-color:var(--r)}
 </style>
 </head>
 <body>
@@ -125,6 +146,7 @@ section .card{scroll-margin-top:72px}
    <div class="qrin"><input type="text" id="qin" placeholder="DS16-CHR-02-03A" autocapitalize="characters" autocomplete="off"><button class="ico" id="qcam" aria-label="Scan with camera"></button></div>
    <div id="qr" class="qrbox"></div>
    <div class="code" id="codeTxt"></div>
+   <div class="prt"><button class="btn wht pbtn" data-print="q"></button><div class="prs"><i class="dot"></i><span class="pn"></span><button class="lnk" data-pick></button></div></div>
   </div>
   <div class="card" id="sel"></div>
  </section>
@@ -142,6 +164,7 @@ section .card{scroll-margin-top:72px}
    <div class="big" id="pbig"></div>
    <svg id="bc"></svg>
    <div class="two"><button class="btn blk" id="pcp"></button><button class="btn wht" id="pclr"></button></div>
+   <div class="prt"><button class="btn wht pbtn" data-print="p"></button><div class="prs"><i class="dot"></i><span class="pn"></span><button class="lnk" data-pick></button></div></div>
   </div>
  </section>
 <section id="sc" class="hide">
@@ -172,6 +195,8 @@ section .card{scroll-margin-top:72px}
  <button class="btn blk" id="flash"></button>
  <button class="btn red" id="cclose"></button>
 </div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="plabel" aria-hidden="true"></div>
 <div id="tmp" class="hide"></div>
 
 <footer>Copyright © _iim_mosev &nbsp;|&nbsp; powered by <a href="https://hihello.com/p/c529a9a2-8f1e-4476-b92a-7e1846f26242" target="_blank" rel="noopener"><b>SEIF MOHAMED</b></a></footer>
@@ -183,10 +208,10 @@ section .card{scroll-margin-top:72px}
 const T={
  ar:{w:'أهلاً بعودتك : _iim_mosev',t1:'QR الأماكن',t2:'Product Code',zone:'القسم',aisle:'الممر',cab:'الدولاب',row:'الصف',col:'العمود',pal:'رقم البالتة',
   enter:'اكتب الكود (من 8 إلى 13 رقم)',scan:'افتح الكاميرا واسكان',img:'اسكان من صورة',bad:'الكود لازم يكون من 8 إلى 13 رقم',aim:'وجّه الكاميرا ناحية الباركود',
-  close:'إغلاق',copy:'نسخ',done:'تم النسخ',clr:'مسح',none:'مفيش كود من 8 إلى 13 رقم في الصورة، جرّب تاني',cerr:'مش قادر أفتح الكاميرا. اسمح بالوصول للكاميرا من إعدادات المتصفح.',inst:'تثبيت كبرنامج',lang:'English',flash:'فلاش',t3:'تصوير وإرسال',t4:'أكواد جاهزة',t5:'توتات',swap:'تبديل',snap:'صوّر',retake:'صوّر تاني',rst:'مسح الكل',grp:'فتح الجروب',nophoto:'صوّر الصورة الأول',shared:'اختار الجروب من القايمة وابعت',desk:'الصورة والرسالة اتنسخوا. الصقهم (Ctrl+V) في الجروب',fno:'الفلاش مش مدعوم على الجهاز ده'},
+  close:'إغلاق',copy:'نسخ',done:'تم النسخ',clr:'مسح',none:'مفيش كود من 8 إلى 13 رقم في الصورة، جرّب تاني',cerr:'مش قادر أفتح الكاميرا. اسمح بالوصول للكاميرا من إعدادات المتصفح.',inst:'تثبيت كبرنامج',lang:'English',flash:'فلاش',t3:'تصوير وإرسال',print:'طباعة',ok:'تمام',fail:'فشل',sending:'جاري الطباعة...',offl:'فشل: الطابعة غير متصلة',selpr:'اختيار الطابعة',nopr:'لم يتم اختيار طابعة',pon:'متصلة',poff:'غير متصلة',pnos:'المتصفح ده مش بيدعم تحديد الطابعة. اختارها من نافذة الطباعة',t4:'أكواد جاهزة',t5:'توتات',swap:'تبديل',snap:'صوّر',retake:'صوّر تاني',rst:'مسح الكل',grp:'فتح الجروب',nophoto:'صوّر الصورة الأول',shared:'اختار الجروب من القايمة وابعت',desk:'الصورة والرسالة اتنسخوا. الصقهم (Ctrl+V) في الجروب',fno:'الفلاش مش مدعوم على الجهاز ده'},
  en:{w:'Welcome back : _iim_mosev',t1:'Location QR',t2:'Product Code',zone:'Section',aisle:'Aisle',cab:'Cabinet',row:'Row',col:'Column',pal:'Pallet No.',
   enter:'Enter code (8 to 13 digits)',scan:'Open camera & scan',img:'Scan from image',bad:'Code must be 8 to 13 digits',aim:'Point the camera at the barcode',
-  close:'Close',copy:'Copy',done:'Copied',clr:'Clear',none:'No 8–13 digit code found, try again',cerr:'Cannot open the camera. Allow camera access in browser settings.',inst:'Install app',lang:'عربي',flash:'Flash',t3:'Photo report',t4:'Presets',t5:'Totes',swap:'Swap',snap:'Take photo',retake:'Retake',rst:'Reset',grp:'Open group',nophoto:'Take a photo first',shared:'Pick the group from the list and send',desk:'Photo and message copied. Paste (Ctrl+V) in the group',fno:'Flash is not supported on this device'}
+  close:'Close',copy:'Copy',done:'Copied',clr:'Clear',none:'No 8–13 digit code found, try again',cerr:'Cannot open the camera. Allow camera access in browser settings.',inst:'Install app',lang:'عربي',flash:'Flash',t3:'Photo report',print:'Print',ok:'Done',fail:'Failed',sending:'Printing...',offl:'Failed: printer not connected',selpr:'Select printer',nopr:'No printer selected',pon:'Connected',poff:'Not connected',pnos:'This browser cannot detect printers. Choose it in the print dialog',t4:'Presets',t5:'Totes',swap:'Swap',snap:'Take photo',retake:'Retake',rst:'Reset',grp:'Open group',nophoto:'Take a photo first',shared:'Pick the group from the list and send',desk:'Photo and message copied. Paste (Ctrl+V) in the group',fno:'Flash is not supported on this device'}
 };
 const ZN={main:['الرئيسي','Main'],bskt:['الباسكيت','Basket'],pro:['برومو','Promo'],chr:['التلاجة','Chiller'],fzr:['الفريزر','Freezer'],pallet:['البالتات','Pallets'],hv:['هاي فاليو','High Value']};
 const P='DS16',pad=n=>String(n).padStart(2,'0');
@@ -254,7 +279,7 @@ function texts(){
  $('wtxt').textContent=t('w');$('t1').textContent=t('t1');$('t2').textContent=t('t2');
  $('penter').textContent=t('enter');$('scan').textContent=t('scan');$('scanimg').textContent=t('img');
  $('cclose').textContent=t('close');$('pcp').textContent=t('copy');$('pclr').textContent=t('clr');
- $('inst').textContent=t('inst');$('flash').textContent=t('flash');$('t3').textContent=t('t3');$('t4').textContent=t('t4');$('t5').textContent=t('t5');$('tswap').textContent=t('swap');buildPre();$('snap').textContent=photo?t('retake'):t('snap');$('grst').textContent=t('rst');$('glink').textContent=t('grp');$('lang').textContent=t('lang');$('cmsg').textContent=t('aim');
+ $('inst').textContent=t('inst');$('flash').textContent=t('flash');$('t3').textContent=t('t3');prUI();$('t4').textContent=t('t4');$('t5').textContent=t('t5');$('tswap').textContent=t('swap');buildPre();$('snap').textContent=photo?t('retake'):t('snap');$('grst').textContent=t('rst');$('glink').textContent=t('grp');$('lang').textContent=t('lang');$('cmsg').textContent=t('aim');
 }
 $('lang').onclick=()=>{localStorage.setItem('nm_lang',lang==='ar'?'en':'ar');location.reload()};
 
@@ -359,6 +384,49 @@ showTote();
 const SECS={q:'sq',p:'sp',g:'sg',c:'sc',t:'st'};
 function go(k){document.querySelectorAll('.tab').forEach(x=>{x.classList.toggle('on',x.dataset.t===k);x.setAttribute('aria-selected',x.dataset.t===k)});Object.entries(SECS).forEach(([a,id])=>$(id).classList.toggle('hide',a!==k))}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>go(b.dataset.t));
+let tmr,pending=false;
+function toast(msg,type){const e=$('toast');e.textContent=msg;e.className='show '+(type||'');clearTimeout(tmr);tmr=setTimeout(()=>e.className='',3200)}
+function printLabel(kind){
+ if(prName&&!prNow){toast(t('offl'),'bad');return}
+ const L=$('plabel');
+ try{
+  if(kind==='q'){
+   const cv=$('qr').querySelector('canvas'),im=$('qr').querySelector('img'),src=cv?cv.toDataURL():(im?im.src:'');
+   if(!src||!cur)throw 0;
+   L.innerHTML='<img class="lq" alt=""><div class="lt"></div>';L.querySelector('img').src=src;L.querySelector('.lt').textContent=cur;
+  }else{
+   const c=$('pc').value;if(c.length<8||c.length>13)throw 0;
+   L.innerHTML='<svg id="lbc"></svg>';
+   const o={height:46,width:2,fontSize:16,margin:0},f=c.length===13?'EAN13':c.length===8?'EAN8':'CODE128';
+   try{JsBarcode('#lbc',c,{...o,format:f})}catch(e){JsBarcode('#lbc',c,{...o,format:'CODE128'})}
+  }
+  pending=true;toast(t('sending'));
+  setTimeout(()=>{try{window.print()}catch(e){pending=false;toast(t('fail'),'bad')}},80);
+ }catch(e){pending=false;toast(t('fail'),'bad')}
+}
+window.addEventListener('afterprint',()=>{$('plabel').innerHTML='';if(pending){pending=false;toast(t('ok'),'good')}});
+document.querySelectorAll('[data-print]').forEach(b=>b.onclick=()=>printLabel(b.dataset.print));
+const prOK='usb' in navigator,nm=d=>d.productName||('USB '+d.vendorId.toString(16)+':'+d.productId.toString(16));
+let prNow=null,prName=localStorage.getItem('nm_pr')||'';
+function prUI(){
+ document.querySelectorAll('.pbtn').forEach(b=>b.textContent=t('print'));
+ document.querySelectorAll('[data-pick]').forEach(b=>{b.textContent=t('selpr');b.classList.toggle('hide',!prOK)});
+ document.querySelectorAll('.prs').forEach(e=>{
+  e.querySelector('.dot').className='dot'+(!prOK||!prName?'':prNow?' on':' off');
+  e.querySelector('.pn').textContent=!prOK?t('pnos'):!prName?t('nopr'):prName+' — '+(prNow?t('pon'):t('poff'));
+ });
+}
+async function prRefresh(){
+ if(prOK){try{prNow=(await navigator.usb.getDevices()).find(d=>nm(d)===prName)||null}catch(e){prNow=null}}
+ prUI();
+}
+async function prPick(){
+ try{const d=await navigator.usb.requestDevice({filters:[]});prName=nm(d);localStorage.setItem('nm_pr',prName)}catch(e){}
+ prRefresh();
+}
+document.querySelectorAll('[data-pick]').forEach(b=>b.onclick=prPick);
+if(prOK){navigator.usb.addEventListener('connect',prRefresh);navigator.usb.addEventListener('disconnect',prRefresh)}
+prRefresh();
 drawCnt();
 applyTheme();texts();build();render();
 const w=$('welcome'),hideW=()=>{w.classList.add('out');setTimeout(()=>w.remove(),600)};
