@@ -101,6 +101,7 @@ footer b{font-weight:600}
 @media(min-width:860px){#sq,#sc{max-width:none;display:grid;grid-template-columns:340px 1fr;gap:16px;align-items:start}#sq .card,#sc .card{margin:0}#sq>.card:first-child,#sc>.card:first-child{position:sticky;top:76px}}
 @media(max-width:480px){main{padding:16px 12px 24px}.card{padding:16px}.pill:not(.ib){padding:0 10px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+section .card{scroll-margin-top:72px}
 </style>
 </head>
 <body>
@@ -191,7 +192,7 @@ const ZN={main:['الرئيسي','Main'],bskt:['الباسكيت','Basket'],pro:
 const P='DS16',pad=n=>String(n).padStart(2,'0');
 const Z={
  main:{aisle:12,cab:16,rows:7,f:s=>`${P}-${pad(s.a)}-${pad(s.c)}-${pad(s.r)}${s.l}`},
- bskt:{cab:5,rows:7,f:s=>`${P}-BSKT${pad(s.c)}-${pad(s.r)}${s.l}`},
+ bskt:{cab:5,rows:7,nocol:1,f:s=>`${P}-BSKT${pad(s.c)}-${pad(s.r)}`},
  pro:{cab:3,rows:7,f:s=>`${P}-PRO-${pad(s.c)}-${pad(s.r)}${s.l}`},
  chr:{cab:25,rows:7,f:s=>`${P}-CHR-${pad(s.c)}-${pad(s.r)}${s.l}`},
  fzr:{cab:25,rows:7,f:s=>`${P}-FZR-${pad(s.c)}-${pad(s.r)}${s.l}`},
@@ -205,19 +206,21 @@ const t=k=>T[lang][k];
 function group(label,key,items,cls){
  return `<span class="lbl">${label}</span><div class="chips">${items.map(v=>`<button class="chip ${cls} ${String(s[key])===String(v)?'on':''}" data-k="${key}" data-v="${v}">${key==='l'?v:(key==='z'?v[1]:pad(v))}</button>`).join('')}</div>`;
 }
+const lastKey=()=>{const z=Z[zone];return z.rows?(z.nocol?'r':'l'):'c'};
 function build(){
  const z=Z[zone],rng=n=>Array.from({length:n},(_,i)=>i+1);
  const zs=Object.keys(Z).map(k=>`<button class="chip ${k===zone?'on':''}" data-k="z" data-v="${k}">${ZN[k][lang==='ar'?0:1]}</button>`).join('');
  let h=`<span class="lbl">${t('zone')}</span><div class="chips">${zs}</div>`;
  if(z.aisle)h+=group(t('aisle'),'a',rng(z.aisle),'n');
  h+=group(z.pal?t('pal'):t('cab'),'c',rng(z.cab),'n');
- if(z.rows){h+=group(t('row'),'r',rng(z.rows),'n');h+=group(t('col'),'l',['A','B','C'],'n')}
+ if(z.rows){h+=group(t('row'),'r',rng(z.rows),'n');if(!z.nocol)h+=group(t('col'),'l',['A','B','C'],'n')}
  $('sel').innerHTML=h;
  $('sel').querySelectorAll('.chip').forEach(b=>b.onclick=()=>{
   const k=b.dataset.k,v=b.dataset.v;
   if(k==='z'){zone=v;s.a=Math.min(s.a,Z[v].aisle||1);s.c=Math.min(s.c,Z[v].cab)}
   else s[k]=k==='l'?v:+v;
   build();render();
+  if(k===lastKey())$('qr').closest('.card').scrollIntoView({behavior:'smooth',block:'start'});
  });
 }
 let cur='';
@@ -232,7 +235,7 @@ const LOC=/^(\d{2}-\d{2}-\d{2}[A-C]|BSKT\d|PRO-|CHR-|FZR-|HV-|PALLET-)/;
 function ok(z,v){const d=Z[z];if(v.c<1||v.c>d.cab||(v.a&&v.a>d.aisle)||(v.r&&v.r>(d.rows||0)))return null;return{zone:z,s:v}}
 function parse(c){let m;
  if(m=c.match(/^DS16-(\d{2})-(\d{2})-(\d{2})([A-C])$/))return ok('main',{a:+m[1],c:+m[2],r:+m[3],l:m[4]});
- if(m=c.match(/^DS16-BSKT(\d{2})-(\d{2})([A-C])$/))return ok('bskt',{c:+m[1],r:+m[2],l:m[3]});
+ if(m=c.match(/^DS16-BSKT(\d{2})-(\d{2})[A-C]?$/))return ok('bskt',{c:+m[1],r:+m[2]});
  if(m=c.match(/^DS16-(PRO|CHR|FZR|HV)-(\d{2})-(\d{2})([A-C])$/))return ok(m[1].toLowerCase(),{c:+m[2],r:+m[3],l:m[4]});
  if(m=c.match(/^DS16-PALLET-(\d{2})$/))return ok('pallet',{c:+m[1]});
  return null}
